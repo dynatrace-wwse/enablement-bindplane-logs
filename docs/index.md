@@ -1,25 +1,31 @@
+In this hands-on lab, you're going to build a Telemetry Pipeline end-to-end. Using **Bindplane** as your collection and processing layer and **Dynatrace** as your observability backend, you'll collect syslog data from a Linux host, shape it in-flight, and deliver it to Dynatrace, where **OpenPipeline** takes over to parse and further enrich it.
 
---8<-- "snippets/disclaimer.md"
+By the end of the lab, you'll know how to:
 
-## How to to use this template?
-This is a template which will guide you on creating your own Hands-On training. 
-Within this tutorial you'll learn the basics how the codespaces work and how the documentation works, so you can build your own Hands-On training in no time.
+- Deploy and configure a Bindplane agent on a Linux host
+- Define sources, processors, and destinations in a Bindplane configuration
+- Enrich logs with custom metadata before they leave the host
+- Parse structured fields out of raw syslog content using Dynatrace OpenPipeline
+- Detect and mask sensitive credentials in-flight using regex-based redaction
+- Route logs selectively so only the right data passes through each processor
+- Convert log events into metrics and query them with DQL
+- Monitor the health of your Bindplane pipeline itself using self-monitoring
 
-- Prerequisites 
-- Setting up the professors environment
-- Writing the documentation
-- How MkDocs work
-- How to write your own functions
-- Create Github documentation and publish it
-- Tipp & tricks
-- Troubleshooting
-
-<p align="center">
-  <img src="img/dt_professors.png" alt="Professors" width="200">
-</p>
-
-!!! tip "What will we do"
-    In this tutorial we will learn how easy it is to create an enablement using codespaces and a Kubernetes cluster!
+## Prerequisites
+- Bindplane account and project
+- Dynatrace tenant
+- Dynatrace token with the following permissions:
+    - storage:logs:write
+    - openpipeline:logs:ingest
+    - storage:metrics:write
+    - openpipeline:metrics:ingest
+- One of:
+    - For working entirely in a browser: access to GitHub Codespaces
+    - For working locally in a [Dev Container](https://code.visualstudio.com/docs/devcontainers/tutorial):
+        - VSCode
+        - Dev Containers Extension installed
+        - Docker
+(more about this in the next section)
 
 <div class="grid cards" markdown>
-- [Yes! let's begin :octicons-arrow-right-24:](2-getting-started.md)
+- [Yes! Let's begin :octicons-arrow-right-24:](2-getting-started.md)

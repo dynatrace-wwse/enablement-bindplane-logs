@@ -5,9 +5,9 @@ source .devcontainer/util/source_framework.sh
 
 setUpTerminal
 
-startK3dCluster
+#startK3dCluster
 
-installK9s
+#installK9s
 
 #TODO: BeforeGoLive: uncomment this. This is only needed for professors to have the Mkdocs live in the container
 
@@ -23,7 +23,7 @@ installK9s
 
 # In here you deploy the Application you want
 # The TODO App will be deployed as a sample
-deployTodoApp
+# deployTodoApp
 
 # The Astroshop keeping changes of demo.live needs certmanagerdocker
 #certmanagerInstall
@@ -32,6 +32,14 @@ deployTodoApp
 
 # If you want to deploy your own App, just create a function in the functions.sh file and call it here.
 # deployMyCustomApp
+
+sudo mkdir -p /var/log/bpsystem
+sudo chown -R "$USER":"$USER" /var/log/bpsystem
+
+if ! declare -F startLogGenerator > /dev/null; then
+	printError "startLogGenerator is not defined. Ensure .devcontainer/util/my_functions.sh is sourced via source_framework.sh."
+	exit 1
+fi
 
 # If the Codespace was created via Workflow end2end test will be done, otherwise
 # it'll verify if there are error in the logs and will show them in the greeting as well a monitoring 

@@ -11,7 +11,7 @@
   // When running locally we pass the 'secrets' as env variables via runArgs "--env-file",".devcontainer/.env"
   "runArgs": ["--init", "--privileged", "--network=host"],
   "mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],
-  // Entrypoint and CMD are overwritten by VSCode
+  // Keep the image entrypoint so it can repair hostname resolution before shell helpers use sudo.
   "overrideCommand": false,
 
   // some base images require a specific user name.
@@ -19,7 +19,7 @@
   
   "postCreateCommand": "./.devcontainer/post-create.sh",
 
-  "postStartCommand": "./.devcontainer/post-start.sh",
+  "postStartCommand": "bash ./.devcontainer/post-start.sh",
   
   "features": {},
   "customizations": {
